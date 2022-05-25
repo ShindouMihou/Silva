@@ -42,3 +42,14 @@ LOCAL_FILE_SERVER=true
 This is not recommended though as it will take up precious resources that are intended for the file operations, instead it is recommended to use NGINX or similar web server proxies for the static files located under `/public` folder.
 
 When specifying the storage driver as local filesystem, you should also map the `/public` folder either to a Docker volume or to a folder in the local system when using Docker to enable persistence of the data. Load balancing with local filesystem is a bit more complex which is why we recommend AWS S3 when possible.
+
+## Installation
+You can install Silva easily with the use of Docker by running the following commands:
+```shell
+git clone https://github.com/ShindouMihou/Silva
+cd Silva
+cp .env.example .env
+nano .env
+docker build -t silva .
+docker run --name silva --env-file .env -p 1210:1210 silva:latest
+```
